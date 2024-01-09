@@ -16,7 +16,7 @@ const BookSmall = (prop) => {
             const databookList = responseJson.data;
             setBookList(databookList);
         } catch (error) {
-            alert('error fetching data from API')
+            console.log('error fetching data from API')
         }
     };
 

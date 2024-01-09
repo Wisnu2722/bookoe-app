@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import TextTruncate from 'react-text-truncate';
 import Rating from "./Rating";
 import Loading from "./Loading";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
     // var TextTruncate = require('react-text-truncate');
@@ -63,7 +64,12 @@ const Hero = () => {
                             />
                         </div>
                         <div>
-                            <button className="">Read Book ➡️</button>
+                            <Link
+                                to={`/book/${bookList[heroIndex3]['id']}`}
+                                key={bookList[heroIndex3]['id']}
+                            >
+                                <button className="rounded-lg  border border-violet-500 p-3 text-violet-500 text-xl font-medium font-['Poppins'] hover:text-white hover:bg-violet-500">Read Book</button>
+                            </Link>
                             <button>See All Recomendation</button>
                         </div>
                     </div>

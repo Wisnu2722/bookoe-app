@@ -3,8 +3,7 @@ import BookDetail from "../components/BookDetail"
 const SingleBook = () => {
     return (
         <>
-            <div>
-                <h1>DETAIL SingleBook</h1>
+            <div className="max-w-[1241px] mx-auto">
                 <BookDetail />
             </div>
         </>
