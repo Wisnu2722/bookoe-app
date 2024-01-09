@@ -16,7 +16,10 @@ const Hero = () => {
             const databookList = responseJson.data;
             setBookList(databookList);
         } catch (error) {
-            alert('error fetching data from API')
+            console.log('error fetching data from API')
+                return <>
+                    <div className="border-2 rounded-lg max-w-32 mx-auto p-3 text-red-600">error fetching data from API</div>
+                </>
         }
     };
 

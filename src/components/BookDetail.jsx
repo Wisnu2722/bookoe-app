@@ -11,7 +11,7 @@ const BookDetail = () => {
     const [bookDetail, setBookDetail] = useState([]);
     const ENDPOINT = `https://bookapi.cm.hmw.lol/`;
 
-    async function bookApi() {
+    async function fetchBook() {
         try {
             const url = `${ENDPOINT}api/books/${id}`;
             const response = await fetch(url);
@@ -24,7 +24,7 @@ const BookDetail = () => {
     }
 
     useEffect(() => {
-        bookApi();
+        fetchBook();
     }, [id]);
 
     // console.log(bookDetail);

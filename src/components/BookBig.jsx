@@ -19,6 +19,9 @@ const BookBig = () => {
                 setBookList(databookList);
             } catch (error) {
                 console.log('error fetching data from API')
+                return <>
+                    <div className="border-2 rounded-lg max-w-32 mx-auto p-3 text-red-600">error fetching data from API</div>
+                </>
             }
         };
         fetchBooks();
