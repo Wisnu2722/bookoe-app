@@ -27,7 +27,19 @@ const BookDetail = () => {
         bookApi();
     }, [id]);
 
-    console.log(bookDetail);
+    // console.log(bookDetail);
+
+    function formatDate(inputDateString) {
+        const inputDate = new Date(inputDateString);
+
+        const options = { day: 'numeric', month: 'long', year: 'numeric' };
+        const formattedDate = inputDate.toLocaleDateString('en-US', options);
+
+        return formattedDate;
+    }
+
+    const inputString = bookDetail['created_at'];
+    const formattedDate = formatDate(inputString);
 
     return (
         <>
@@ -72,6 +84,10 @@ const BookDetail = () => {
                                 />
                             )}
                         </div>
+
+                        <p className="mt-8 text-neutral-500 text-xl font-light font-['Poppins']">
+                            First published {formattedDate}
+                        </p>
                     </div>
                 </div>
             </div>
