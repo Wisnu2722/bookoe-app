@@ -1,14 +1,14 @@
-import Header from "../components/Header"
-import Footer from "../components/Footer"
+import BookDetail from "../components/BookDetail"
 
 const SingleBook = () => {
-  return (
-    <>
-    <Header />
-    <div>SingleBook</div>
-    <Footer />
-    </>
-  )
+    return (
+        <>
+            <div>
+                <h1>DETAIL SingleBook</h1>
+                <BookDetail />
+            </div>
+        </>
+    )
 }
 
 export default SingleBook

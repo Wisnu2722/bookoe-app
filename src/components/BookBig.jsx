@@ -3,40 +3,32 @@ import Rating from "./Rating";
 import Loading from "./Loading";
 import RandomIndexGenerator from "./RandomIndexGenerator";
 import TextTruncate from "react-text-truncate";
+import { Link } from "react-router-dom";
+
 const BookBig = () => {
     const [bookList, setBookList] = useState([]);
     const ENDPOINT = "https://bookapi.cm.hmw.lol/api/books/";
 
-    const fetchBooks = async () => {
-        const response = await fetch(ENDPOINT);
-        const responseJson = await response.json();
-        const dataBookList = responseJson.data;
-        setBookList(dataBookList);
-
-    };
 
     useEffect(() => {
+        const fetchBooks = async () => {
+            try {
+                const response = await fetch(ENDPOINT);
+                const responseJson = await response.json();
+                const databookList = responseJson.data;
+                setBookList(databookList);
+            } catch (error) {
+                console.log('error fetching data from API')
+            }
+        };
         fetchBooks();
     }, []);
 
     // const index = Math.random(1,5)
     const index1 = RandomIndexGenerator()
     const index2 = RandomIndexGenerator()
-
-    if (index2 === index1) {
-        const index2 = RandomIndexGenerator()
-    }
-
     const index3 = RandomIndexGenerator()
-    if (index3 === index2 || index3 === index1) {
-        const index3 = RandomIndexGenerator()
-    }
-    
     const index4 = RandomIndexGenerator()
-    if (index4 === index3 || index4 === index2 || index4 === index1) {
-        const index4 = RandomIndexGenerator()
-    }
-
 
     return (
         <>
@@ -78,7 +70,12 @@ const BookBig = () => {
                                         </p>
                                     </div>
                                     <div className="max-w-[270px] align-bottom mt-[26px] flex items-stretch flex-col item ">
-                                        <button className=" rounded-lg align-bottom max-w-full border border-violet-500 p-3 text-violet-500 text-xl font-medium font-['Poppins'] hover:text-white hover:bg-violet-500 ">Read Book</button>
+                                        <Link
+                                            to={`/book/${bookList[index1]['id']}`}
+                                            key={bookList[index1]['id']}
+                                        >
+                                            <button className="rounded-lg  w-full border border-violet-500 p-3 text-violet-500 text-xl font-medium font-['Poppins'] hover:text-white hover:bg-violet-500">Read Book</button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
@@ -116,7 +113,12 @@ const BookBig = () => {
                                         </p>
                                     </div>
                                     <div className="max-w-[270px] align-bottom mt-[26px] flex items-stretch flex-col item ">
-                                        <button className=" rounded-lg align-bottom max-w-full border border-violet-500 p-3 text-violet-500 text-xl font-medium font-['Poppins'] hover:text-white hover:bg-violet-500 ">Read Book</button>
+                                        <Link
+                                            to={`/book/${bookList[index2]['id']}`}
+                                            key={bookList[index2]['id']}
+                                        >
+                                            <button className="rounded-lg  w-full border border-violet-500 p-3 text-violet-500 text-xl font-medium font-['Poppins'] hover:text-white hover:bg-violet-500">Read Book</button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
@@ -157,7 +159,12 @@ const BookBig = () => {
                                         </p>
                                     </div>
                                     <div className="max-w-[270px] align-bottom mt-[26px] flex items-stretch flex-col item ">
-                                        <button className=" rounded-lg align-bottom max-w-full border border-violet-500 p-3 text-violet-500 text-xl font-medium font-['Poppins'] hover:text-white hover:bg-violet-500 ">Read Book</button>
+                                        <Link
+                                            to={`/book/${bookList[index3]['id']}`}
+                                            key={bookList[index3]['id']}
+                                        >
+                                            <button className="rounded-lg  w-full border border-violet-500 p-3 text-violet-500 text-xl font-medium font-['Poppins'] hover:text-white hover:bg-violet-500">Read Book</button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
@@ -195,7 +202,12 @@ const BookBig = () => {
                                         </p>
                                     </div>
                                     <div className="max-w-[270px] align-bottom mt-[26px] flex items-stretch flex-col item ">
-                                        <button className=" rounded-lg align-bottom max-w-full border border-violet-500 p-3 text-violet-500 text-xl font-medium font-['Poppins'] hover:text-white hover:bg-violet-500 ">Read Book</button>
+                                        <Link
+                                            to={`/book/${bookList[index4]['id']}`}
+                                            key={bookList[index4]['id']}
+                                        >
+                                            <button className="rounded-lg  w-full border border-violet-500 p-3 text-violet-500 text-xl font-medium font-['Poppins'] hover:text-white hover:bg-violet-500">Read Book</button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

@@ -2,18 +2,22 @@ import { useState, useEffect } from "react";
 import Rating from "./Rating";
 import Loading from "./Loading";
 import TextTruncate from "react-text-truncate";
+import { Link } from "react-router-dom";
 
 
-const BookSmall = () => {
+const BookSmall = (prop) => {
     const [bookList, setBookList] = useState([]);
-    const ENDPOINT = "https://bookapi.cm.hmw.lol/api/books/";
+    // const ENDPOINT = "https://bookapi.cm.hmw.lol/api/books/";
 
     const fetchBooks = async () => {
-        const response = await fetch(ENDPOINT);
-        const responseJson = await response.json();
-        const dataBookList = responseJson.data;
-        setBookList(dataBookList);
-
+        try {
+            const response = await fetch(prop.ENDPOINT);
+            const responseJson = await response.json();
+            const databookList = responseJson.data;
+            setBookList(databookList);
+        } catch (error) {
+            alert('error fetching data from API')
+        }
     };
 
     useEffect(() => {
@@ -30,17 +34,22 @@ const BookSmall = () => {
                                     <img className="rounded-lg w-full h-full object-cover" src={book['image_url']} alt="book cover image" />
                                 </div>
                                 <p className=" text-black text-2xl font-semibold font-['Poppins'] mb-2 ">
-                                        <TextTruncate
-                                            line={2}
-                                            element="span"
-                                            truncateText="…"
-                                            text={book['title']}
-                                        />
-                                    </p>
+                                    <TextTruncate
+                                        line={2}
+                                        element="span"
+                                        truncateText="…"
+                                        text={book['title']}
+                                    />
+                                </p>
                                 <p className=" mb-3  ">by {book['author']['name']}</p>
                                 <Rating value={book['rating']} />
                                 <div className="align-bottom mt-[12px] self-end">
-                                    <button className="rounded-lg  w-full border border-violet-500 p-3 text-violet-500 text-xl font-medium font-['Poppins'] hover:text-white hover:bg-violet-500">Read Book</button>
+                                    <Link
+                                    to={`/book/${book.id}`}
+                                    key={book.id}
+                                    >
+                                        <button className="rounded-lg  w-full border border-violet-500 p-3 text-violet-500 text-xl font-medium font-['Poppins'] hover:text-white hover:bg-violet-500">Read Book</button>
+                                    </Link>
                                 </div>
                             </div>
                         ))}

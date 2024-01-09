@@ -9,10 +9,14 @@ const Hero = () => {
     const ENDPOINT = "https://bookapi.cm.hmw.lol/api/books/";
 
     const fetchBooks = async () => {
-        const response = await fetch(ENDPOINT);
-        const responseJson = await response.json();
-        const databookList = responseJson.data;
-        setBookList(databookList);
+        try {
+            const response = await fetch(ENDPOINT);
+            const responseJson = await response.json();
+            const databookList = responseJson.data;
+            setBookList(databookList);
+        } catch (error) {
+            alert('error fetching data from API')
+        }
     };
 
     useEffect(() => {
@@ -44,9 +48,9 @@ const Hero = () => {
                                 text={bookList[heroIndex3]['title']}
                             />
                         </p>
-                        <div className="hero-rating mt-4 ">
+                        <div className="hero-rating  mt-4 ">
                             <div className="author">{bookList[heroIndex3]['author']['name']}</div>
-                            <div className="star-rating">
+                            <div className="star-rating ">
                                 <Rating value={bookList[heroIndex3]['rating']} />
                             </div>
                         </div>
