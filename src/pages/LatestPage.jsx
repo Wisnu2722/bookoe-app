@@ -11,7 +11,7 @@ const LatestPage = () => {
                 </div>
             </div>
 
-            <div className="max-w-[1241px] mx-auto">
+            <div className="max-w-[1241px] min-h-80 mx-auto">
                 <Latest />
             </div>
         </>

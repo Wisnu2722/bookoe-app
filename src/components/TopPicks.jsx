@@ -32,7 +32,13 @@ const TopPicks = () => {
         <>
             <div className='grid grid-cols-4 gap-x-[60px]'>
                 {topPick.map((book, index) => (
-                    <div key={index} className="book-info items-end">
+                    <div key={index} className="book-info relative items-end">
+                        <div className="pl-4 py-1 absolute top-6 rounded-r-2xl w-1/4 flex justify-end bg-violet-600 pr-1">
+                            <div className="w-[24px] h-[24px] bg-white rounded-[50px] z-10  pl-[8px] pt-[3px]  " >
+                                <p className="text-violet-500 text-sm    font-normal font-['Poppins'] z-20">{index + 1}</p>
+                            </div>
+
+                        </div>
                         <div className="w-min[260px] h-[340px] overflow-hidden">
                             <img className="rounded-lg w-full h-full object-cover" src={book['image_url']} alt="book cover image" />
                         </div>
